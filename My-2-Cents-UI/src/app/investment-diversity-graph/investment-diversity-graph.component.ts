@@ -17,13 +17,6 @@ export class InvestmentDiversityGraphComponent
   listOfData: number[] = [500, 400, 250, 100];
   chartColors: string[] = ["rgba(68, 209, 243, 0.84)", "rgba(230, 255, 0, 0.84)", "rgba(15, 128, 193, 0.84)", "rgba(230, 160, 0, 0.84)"];
 
-  chartGroup = new FormGroup({
-    myData: new FormControl(""),
-    myData2: new FormControl(""),
-    myData3: new FormControl(""),
-    myData4: new FormControl("")
-  });
-
   constructor(){ }
 
   // Pie
