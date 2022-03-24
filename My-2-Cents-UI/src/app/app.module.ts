@@ -18,6 +18,8 @@ import { CreateProfileComponent } from './create-profile/create-profile.componen
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import { JwtInterceptor } from './_interceptors/jwt.interceptor';
+import { InvestmentDiversityGraphComponent } from './investment-diversity-graph/investment-diversity-graph.component';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -30,14 +32,16 @@ import { JwtInterceptor } from './_interceptors/jwt.interceptor';
     TrackMultipleAccountsComponent,
     UserChangeInfoComponent,
     CreateProfileComponent,
-    RegisterComponent
+    RegisterComponent,
+    InvestmentDiversityGraphComponent
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgChartsModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
