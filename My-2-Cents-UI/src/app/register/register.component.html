@@ -1,69 +1,71 @@
-<div style="text-align: center;">
-<form [formGroup]='registerForm' (ngSubmit)="register()" autocomplete="off" class="mx-1 mx-md-4">
-  
-    <div class="form-outline flex-fill mb-0 form-group" style="padding: 0.375rem 0.15rem;" >
-        <label class="form-label">User Name</label>
+<div class='card' style="text-align: center; border: 500px;">
+  <h4 class="card-header">Register</h4>
+  <div class="cardbody">
+<form [formGroup]='registerForm' (ngSubmit)="register()" autocomplete="off">
+    <div>
+        <label class="form-label">User Name</label><br>
         <input 
             type="text" 
             class="form-control" 
             formControlName='username'
             placeholder="User Name"
-            [class.is-invalid]='registerForm.get("username").errors 
-              && registerForm.get("username").touched'/>
-        <div class="invalid-feedback">Please Enter UserName</div>
+            [class.is-invalid]='submitted && registerForm.get("username").errors'/>
+            
+            <div *ngIf="submitted && registerForm.get('username').hasError('required')" 
+            class="invalid-feedback" style="color:red">Please enter a username</div><br><br><br>
     </div>      
-    <div class="d-flex flex-row align-items-center mb-4 form-group">
-      <div class="form-outline flex-fill mb-0">
-        <label class="form-label">Email Address</label>
+    <div>
+        <label class="form-label">Email Address</label><br>
         <input 
               type="email" 
               class="form-control" 
               formControlName='email'
               placeholder="Email"
-              [class.is-invalid]='registerForm.get("email").errors 
-              && registerForm.get("email").touched' />
-              <div class="invalid-feedback">Please Enter Email Address</div>
-      </div>
+              [class.is-invalid]='submitted && registerForm.get("email").errors'/>
+
+              <div *ngIf="submitted && registerForm.get('email').hasError('required')" 
+              class="invalid-feedback" style="color:red">Please enter your email</div><br><br><br>
     </div>
-    <div class="d-flex flex-row align-items-center mb-4 form-group">
-      <div class="form-outline flex-fill mb-0">
-        <label class="form-label">Password (contains 1capital, 1small, and speical Characters)</label>
+    <div>
+        <label class="form-label">Password</label><br>
         <input 
               type="password" 
               class="form-control" 
               formControlName='password'
               placeholder="Password"
-              [class.is-invalid]='registerForm.get("password").errors 
-              && registerForm.get("password").touched' 
-              />
-              <div *ngIf="registerForm.get('password').hasError('required')" 
-                  class="invalid-feedback">Please Enter a password</div>
-              <div *ngIf="registerForm.get('password').hasError('minlength')" 
-                  class="invalid-feedback">Minium Length is at least 6 characters</div>
-      </div>
+              [class.is-invalid]='submitted && registerForm.get("password").errors'/>
+
+              <div *ngIf="submitted && registerForm.get('password').hasError('required')" 
+                class="invalid-feedback" style="color:red">Please enter a password</div><br>
+
+              <div *ngIf="submitted && registerForm.get('password').hasError('minlength')" 
+                class="invalid-feedback">Minimum length should be at least 6 characters!</div><br>
+
+              <div *ngIf="submitted && registerForm.get('password').hasError('pattern')" 
+                class="invalid-feedback">Must contain at least 1 uppercase letter, 1 lowercase letter, and 1 special character!</div><br>
     </div>  
     <div class="d-flex flex-row align-items-center mb-4 form-group">
-      <div class="form-outline flex-fill mb-0">
-        <label class="form-label">Confirm password</label>
+        <label class="form-label" >Confirm Password</label><br>
         <input  
               type="password" 
               class="form-control" 
               formControlName='confirmPassword'
               placeholder="Confirm Password"
-              [class.is-invalid]='registerForm.get("confirmPassword").errors 
-              && registerForm.get("confirmPassword").touched' />
-              <div *ngIf="registerForm.get('confirmPassword').hasError('required')" 
-                          class="invalid-feedback">Please Enter a Confirm Password</div>
-              <div *ngIf="registerForm.get('confirmPassword').hasError('isMatching')" 
-                          class="invalid-feedback">Confirm Password must be match Password</div>
-      </div>
+              [class.is-invalid]='submitted && registerForm.get("confirmPassword").errors'/>
+
+              <span *ngIf="submitted && registerForm.get('confirmPassword').hasError('required')" 
+                class="invalid-feedback" style="color:red">Please re-enter your password</span><br>
+
+              <div *ngIf="submitted && registerForm.get('confirmPassword').hasError('isMatching')" 
+                class="invalid-feedback" style="color:red">Both passwords must match!</div><br><br><br>
     </div>
 
     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4" >
       <button type="submit" style="padding:0.3rem 0.50rem;" class="btn1 btn btn-primary btn-lg">Register</button>
-    </div>        
+    </div><br>       
   </form>
   <div class="d-flex justify-content-center flex-row align-items-center mb-4">
-      <span>Already have an account?<a routerLink="/">Log In</a></span>
+      <span>Already have an account? <a routerLink="/">Log in.</a></span>
+  </div>
   </div>
 </div>
