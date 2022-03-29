@@ -6,3 +6,8 @@
   right: 0;
   padding-right: 6px;
 }
+
+.wrapper-div{
+  width: 25vw;
+  height: 25vh;
+}
