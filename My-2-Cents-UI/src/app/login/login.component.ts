@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormControl, FormGroup } from '@angular/forms';
 import { AccountService } from '../_services/account.service';
 
 @Component({
@@ -11,11 +10,6 @@ import { AccountService } from '../_services/account.service';
 export class LoginComponent implements OnInit {
   model: any = {}
   users: any;
-
-  ngForm = new FormGroup({
-    username: new FormControl(""),
-    password: new FormControl("")
-  });
 
   constructor(public accountService: AccountService, private router: Router) {}
 
