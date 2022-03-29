@@ -16,7 +16,7 @@ export class InvestmentDiversityGraphComponent
   
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
 
-  listOfData: number[] = [500, 500, 500, 500];
+  listOfData: number[] = [200, 200, 200, 200];
   chartColors: string[] = ["rgba(68, 209, 243, 0.84)", "rgba(230, 255, 0, 0.84)", "rgba(15, 128, 193, 0.84)", "rgba(230, 160, 0, 0.84)"];
   listOfAccounts: Account[];
   listOfCheckingAccounts: Account[];
@@ -26,22 +26,20 @@ export class InvestmentDiversityGraphComponent
   constructor(private twoCentsService: My2CentsService, private router: Router){ 
 
     // hardcoded to userID 1 for now, will update later
-    this.twoCentsService.getUserAccounts(1).subscribe(result => 
+    this.twoCentsService.getUserAccounts(10).subscribe(result => 
       {
         this.listOfAccounts = result;
-
         this.filterAccountTypeAndGetTotal();
-
+        console.log(result);
       }
       )}
 
       // Will filter found accounts by type and get totals.
 
       filterAccountTypeAndGetTotal() {
-        this.listOfCheckingAccounts = this.listOfAccounts.filter(x => x.accountType = "checking");
+        this.listOfCheckingAccounts = this.listOfAccounts.filter(x => x.accountType === "Savings");
 
-        this.listOfSavingsAccounts = this.listOfAccounts.filter(x => x.accountType = "savings");
-
+        this.listOfSavingsAccounts = this.listOfAccounts.filter(x => x.accountType === "Checking");
         let checkingTotal: number = 0;
         let savingsTotal: number = 0;
 
@@ -60,8 +58,8 @@ export class InvestmentDiversityGraphComponent
         });
 
       // Sets data for chart to equal what we just totalled
-        this.listOfData[0] = checkingTotal;
-        this.listOfData[2] = savingsTotal;
+        this.listOfData[2] = checkingTotal;
+        this.listOfData[0] = savingsTotal;
 
 
       // Taking old data out of chart
@@ -99,7 +97,7 @@ export class InvestmentDiversityGraphComponent
       datalabels: {
         color: "#F",
         font: {
-          size: 30,
+          size: 25,
           family: 'Arial, Helvetica, sans-serif'
         },
         formatter: (value, ctx) => {
