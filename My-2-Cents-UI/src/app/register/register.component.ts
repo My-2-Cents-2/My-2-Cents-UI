@@ -12,11 +12,11 @@ export class RegisterComponent implements OnInit {
   registerMode = false;
   model: any = {}
   registerForm: FormGroup;
-  submitted = false;
+  submitted: boolean;
 
   constructor(private accountService: AccountService, 
               private router: Router, 
-              private fb: FormBuilder) { }
+              private fb: FormBuilder) {this.submitted = false;}
 
   ngOnInit(): void {
     this.initializeForm();
@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
     this.registerForm = this.fb.group({
         username:['', Validators.required],
         email: ['', Validators.required],
-        password: ['', [Validators.required, Validators.minLength(6), Validators.pattern('^[a-zA-Z0-9!@#$%^&*()]+$')]],
+        password: ['', [Validators.required, Validators.minLength(6), Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*#?&])$')]],
         confirmPassword: ['', [Validators.required, this.matchValues('password')]]
     })
     this.registerForm.controls['password'].valueChanges.subscribe(()=>{
@@ -43,14 +43,14 @@ export class RegisterComponent implements OnInit {
 
 
   register(){
-    this.submitted = true;
 
-    console.log(this.registerForm.value);
+    this.submitted = true;
+    console.log(this.registerForm.value, this.submitted);
     this.accountService.register(this.registerForm.value).subscribe(response => {
       this.router.navigateByUrl('/dashboard')
       console.log(response);
     }, error => {
-      console.log(error);
+      console.log(error, this.submitted);
     })
   }
 
