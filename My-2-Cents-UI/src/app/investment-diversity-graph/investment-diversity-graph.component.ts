@@ -1,19 +1,24 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import DatalabelsPlugin from "chartjs-plugin-datalabels";
 import { ChartConfiguration, ChartData, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import { My2CentsService } from '../_services/my2-cents.service';
+import { AccountService } from '../_services/account.service';
+import { User } from '../_models/User';
 import { Router } from '@angular/router';
 import { Account } from '../_models/account';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-investment-diversity-graph',
   templateUrl: './investment-diversity-graph.component.html',
   styleUrls: ['./investment-diversity-graph.component.css']
 })
-export class InvestmentDiversityGraphComponent 
+export class InvestmentDiversityGraphComponent implements OnInit
 {
   
+  User = <User>{};
+
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
 
   listOfData: number[] = [200, 200, 200, 200];
@@ -23,61 +28,60 @@ export class InvestmentDiversityGraphComponent
   listOfSavingsAccounts: Account[];
 
 
-  constructor(private twoCentsService: My2CentsService, private router: Router){ 
+  constructor(private twoCentsService: My2CentsService, private router: Router, public accountService: AccountService){ this.accountService.currentUser.pipe(take(1)).subscribe((data) => this.User = data); }
 
-    // hardcoded to userID 1 for now, will update later
-    this.twoCentsService.getUserAccounts(10).subscribe(result => 
+    ngOnInit(): void {
+      // console.log("this is my beautiful user id!!!" + this.User.userId);
+
+      // gets the user's checking and savings account(s) and then filters them by the account type (checking/savings)
+      this.twoCentsService.getUserAccounts(this.User.userId).subscribe(result => 
       {
         this.listOfAccounts = result;
         this.filterAccountTypeAndGetTotal();
-        console.log(result);
-      }
-      )}
+        //console.log(result);
+      })
+    }
 
-      // Will filter found accounts by type and get totals.
+    // Will filter found accounts by type and get totals.
+    filterAccountTypeAndGetTotal() {
+      this.listOfCheckingAccounts = this.listOfAccounts.filter(x => x.accountType === "Savings");
 
-      filterAccountTypeAndGetTotal() {
-        this.listOfCheckingAccounts = this.listOfAccounts.filter(x => x.accountType === "Savings");
+      this.listOfSavingsAccounts = this.listOfAccounts.filter(x => x.accountType === "Checking");
+      let checkingTotal: number = 0;
+      let savingsTotal: number = 0;
 
-        this.listOfSavingsAccounts = this.listOfAccounts.filter(x => x.accountType === "Checking");
-        let checkingTotal: number = 0;
-        let savingsTotal: number = 0;
+    // Will add up all checking account totals of a specific user
 
-      // Will add up all checking account totals of a specific user
+      this.listOfCheckingAccounts.forEach(el => {
 
-        this.listOfCheckingAccounts.forEach(el => {
+        checkingTotal = checkingTotal + el.totalBalance;
+        
+      });
+    // Will add up all savings account totals of a specific user
+    this.listOfSavingsAccounts.forEach(el => {
 
-          checkingTotal = checkingTotal + el.totalBalance;
-          
-        });
-      // Will add up all savings account totals of a specific user
-      this.listOfSavingsAccounts.forEach(el => {
+        savingsTotal = savingsTotal + el.totalBalance;
+        
+      });
 
-          savingsTotal = savingsTotal + el.totalBalance;
-          
-        });
-
-      // Sets data for chart to equal what we just totalled
-        this.listOfData[2] = checkingTotal;
-        this.listOfData[0] = savingsTotal;
-
-
-      // Taking old data out of chart
-        this.pieChartData.datasets[0].data.pop();
-        this.pieChartData.datasets[0].data.pop();
-        this.pieChartData.datasets[0].data.pop();
-        this.pieChartData.datasets[0].data.pop();
-
-      // Pushing new data into chart
-        this.pieChartData.datasets[0].data.push(this.listOfData[0], this.listOfData[1], this.listOfData[2], this.listOfData[3]);
-
-        this.chart?.update();
-        this.chart?.render();
-
-      }
+    // Sets data for chart to equal what we just totalled
+      this.listOfData[2] = checkingTotal;
+      this.listOfData[0] = savingsTotal;
 
 
-     
+    // Taking old data out of chart
+      this.pieChartData.datasets[0].data.pop();
+      this.pieChartData.datasets[0].data.pop();
+      this.pieChartData.datasets[0].data.pop();
+      this.pieChartData.datasets[0].data.pop();
+
+    // Pushing new data into chart
+      this.pieChartData.datasets[0].data.push(this.listOfData[0], this.listOfData[1], this.listOfData[2], this.listOfData[3]);
+
+      this.chart?.update();
+      this.chart?.render();
+
+    }
 
   // Pie
   public pieChartOptions: ChartConfiguration['options'] = {
