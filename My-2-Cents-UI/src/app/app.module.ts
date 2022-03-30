@@ -20,6 +20,9 @@ import { RegisterComponent } from './register/register.component';
 import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 import { InvestmentDiversityGraphComponent } from './investment-diversity-graph/investment-diversity-graph.component';
 import { NgChartsModule } from 'ng2-charts';
+import { InvestmentPortfolioMainComponent } from './investment-portfolio/investment-portfolio-main/investment-portfolio-main.component';
+import { InvestmentPortfolioTableComponent } from './investment-portfolio/investment-portfolio-table/investment-portfolio-table.component';
+import { OrderHistoryComponent } from './investment-portfolio/order-history/order-history.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,10 @@ import { NgChartsModule } from 'ng2-charts';
     UserChangeInfoComponent,
     CreateProfileComponent,
     RegisterComponent,
-    InvestmentDiversityGraphComponent
+    InvestmentDiversityGraphComponent,
+    InvestmentPortfolioMainComponent,
+    InvestmentPortfolioTableComponent,
+    OrderHistoryComponent
   ],
   imports: [
     HttpClientModule,
