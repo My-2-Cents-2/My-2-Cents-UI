@@ -4,7 +4,10 @@
 
 export const environment = {
   production: false,
+  //uncomment out before commit and remove one below
+  //apiUrl: 'https://localhost:7106/api/'
   apiUrl: 'https://my2centsapi.azurewebsites.net/api/'
+
 };
 
 /*
