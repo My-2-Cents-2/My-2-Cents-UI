@@ -7,7 +7,9 @@ import { AccountService } from '../_services/account.service';
 import { User } from '../_models/User';
 import { Router } from '@angular/router';
 import { Account } from '../_models/account';
+import { StockAsset } from '../_models/investmentPortfolio';
 import { take } from 'rxjs';
+import { InvestmentPortfolioService } from '../_services/investment-portfolio.service';
 
 @Component({
   selector: 'app-investment-diversity-graph',
@@ -26,9 +28,11 @@ export class InvestmentDiversityGraphComponent implements OnInit
   listOfAccounts: Account[];
   listOfCheckingAccounts: Account[];
   listOfSavingsAccounts: Account[];
+  listOfStocks: StockAsset[];
+  //TODO: Add code below once implemented
+  //listOfCrypto: CryptoAsset[];
 
-
-  constructor(private twoCentsService: My2CentsService, private router: Router, public accountService: AccountService){ this.accountService.currentUser.pipe(take(1)).subscribe((data) => this.User = data); }
+  constructor(private twoCentsService: My2CentsService, private investmentPortfolioService: InvestmentPortfolioService, private router: Router, public accountService: AccountService){ this.accountService.currentUser.pipe(take(1)).subscribe((data) => this.User = data); }
 
     ngOnInit(): void {
       // console.log("this is my beautiful user id!!!" + this.User.userId);
@@ -40,6 +44,23 @@ export class InvestmentDiversityGraphComponent implements OnInit
         this.filterAccountTypeAndGetTotal();
         //console.log(result);
       })
+
+      // gets the user's stock information and then adds up their total investment 
+      this.investmentPortfolioService.getAllStockAssetByUser(this.User.userId).subscribe(result => {
+        this.listOfStocks = result;
+        this.getTotalCurrentStockValue();
+        console.log("my list of amazing stocks everyone should buy: " + this.listOfStocks);
+      })
+
+  
+
+      // TODO: CHANGE THE GET ALL STOCK ASSETS BELOW TO CRYPTO 
+      // //gets the user's crypto information and then adds up their total investment 
+      // this.investmentPortfolioService.getAllStockAssetByUser(this.User.userId).subscribe(result => {
+      //   this.listOfCrypto = result;
+      //   console.log("my list of amazing stocks everyone should buy: " + this.listOfCrypto);
+      // })
+     
     }
 
     // Will filter found accounts by type and get totals.
@@ -50,38 +71,97 @@ export class InvestmentDiversityGraphComponent implements OnInit
       let checkingTotal: number = 0;
       let savingsTotal: number = 0;
 
-    // Will add up all checking account totals of a specific user
+      // Will add up all checking account totals of a specific user
 
       this.listOfCheckingAccounts.forEach(el => {
 
         checkingTotal = checkingTotal + el.totalBalance;
         
       });
-    // Will add up all savings account totals of a specific user
-    this.listOfSavingsAccounts.forEach(el => {
+      // Will add up all savings account totals of a specific user
+      this.listOfSavingsAccounts.forEach(el => {
 
         savingsTotal = savingsTotal + el.totalBalance;
         
       });
 
-    // Sets data for chart to equal what we just totalled
+      // Sets data for chart to equal what we just totalled
       this.listOfData[2] = checkingTotal;
       this.listOfData[0] = savingsTotal;
 
 
-    // Taking old data out of chart
+      // Taking old data out of chart
       this.pieChartData.datasets[0].data.pop();
       this.pieChartData.datasets[0].data.pop();
       this.pieChartData.datasets[0].data.pop();
       this.pieChartData.datasets[0].data.pop();
 
-    // Pushing new data into chart
+      // Pushing new data into chart
       this.pieChartData.datasets[0].data.push(this.listOfData[0], this.listOfData[1], this.listOfData[2], this.listOfData[3]);
 
       this.chart?.update();
       this.chart?.render();
 
     }
+
+    getTotalCurrentStockValue()
+    {
+      // for each stock in the list of stocks, add up the stockPrice 
+      //to get the total of what you own in the stocks category
+      let stockTotal: number = 0;
+
+      this.listOfStocks.forEach(el => {
+
+        stockTotal = stockTotal + el.stockPrice;
+        
+      });
+
+      // Sets data for chart to equal what we just totalled
+      this.listOfData[3] = stockTotal;
+
+      // Taking old data out of chart
+      this.pieChartData.datasets[0].data.pop();
+      this.pieChartData.datasets[0].data.pop();
+      this.pieChartData.datasets[0].data.pop();
+      this.pieChartData.datasets[0].data.pop();
+
+      // Pushing new data into chart
+      this.pieChartData.datasets[0].data.push(this.listOfData[0], this.listOfData[1], this.listOfData[2], this.listOfData[3]);
+
+      this.chart?.update();
+      this.chart?.render();
+
+    }
+
+    //TODO: Add function below by uncommenting once crypto is finished 
+    // getTotalCurrentCryptoValue()
+    // {
+    //   // for each stock in the list of stocks, add up the stockPrice 
+    //   //to get the total of what you own in the stocks category
+    //   let cryptoTotal: number = 0;
+
+    //   this.listOfCrypto.forEach(el => {
+
+    //     cryptoTotal = cryptoTotal + el.cryptoPrice;
+        
+    //   });
+
+    //   // Sets data for chart to equal what we just totalled
+    //   this.listOfData[1] = cryptoTotal;
+
+    //   // Taking old data out of chart
+    //   this.pieChartData.datasets[0].data.pop();
+    //   this.pieChartData.datasets[0].data.pop();
+    //   this.pieChartData.datasets[0].data.pop();
+    //   this.pieChartData.datasets[0].data.pop();
+
+    //   // Pushing new data into chart
+    //   this.pieChartData.datasets[0].data.push(this.listOfData[0], this.listOfData[1], this.listOfData[2], this.listOfData[3]);
+
+    //   this.chart?.update();
+    //   this.chart?.render();
+
+    // }
 
   // Pie
   public pieChartOptions: ChartConfiguration['options'] = {
@@ -101,7 +181,7 @@ export class InvestmentDiversityGraphComponent implements OnInit
       datalabels: {
         color: "#F",
         font: {
-          size: 25,
+          size: 0,
           family: 'Arial, Helvetica, sans-serif'
         },
         formatter: (value, ctx) => {
