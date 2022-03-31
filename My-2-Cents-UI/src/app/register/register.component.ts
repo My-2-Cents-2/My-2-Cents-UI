@@ -12,7 +12,8 @@ export class RegisterComponent implements OnInit {
   registerMode = false;
   model: any = {}
   registerForm: FormGroup;
-  submitted: boolean;
+  submitted = false;
+  show: boolean = false;
 
   constructor(private accountService: AccountService, 
               private router: Router, 
@@ -52,6 +53,11 @@ export class RegisterComponent implements OnInit {
     }, error => {
       console.log(error, this.submitted);
     })
+  }
+
+  showPassword()
+  {
+    this.show = !this.show;
   }
 
 }
