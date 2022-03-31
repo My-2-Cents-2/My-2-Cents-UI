@@ -52,8 +52,6 @@ export class InvestmentDiversityGraphComponent implements OnInit
         console.log("my list of amazing stocks everyone should buy: " + this.listOfStocks);
       })
 
-  
-
       // TODO: CHANGE THE GET ALL STOCK ASSETS BELOW TO CRYPTO 
       // //gets the user's crypto information and then adds up their total investment 
       // this.investmentPortfolioService.getAllStockAssetByUser(this.User.userId).subscribe(result => {
