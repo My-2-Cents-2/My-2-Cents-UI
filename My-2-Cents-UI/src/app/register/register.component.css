@@ -1,3 +1,14 @@
+.form-control {
+  width:40%;
+  margin-top: .5rem;
+
+}
+
+.span-text {
+  padding-bottom: 1.5rem;
+  font-size: .8rem;
+}
+
 .card {
     position: relative;
     display: flex;
@@ -17,7 +28,7 @@
 
   .card-body {
     flex: 1 1 auto;
-    padding: 1rem 1rem;
+    /* padding: 1rem 1rem; */
     border-left-width: 10px solid rgba(0, 0, 0, 0.125);
     border-right-width: 10px solid rgba(0, 0, 0, 0.125);
   }
@@ -32,10 +43,12 @@
   }
   
   .card-header {
-    padding: 1rem 1rem;
+    padding: 1rem;
     margin-bottom: 0;
     background-color: rgba(0, 0, 0, 0.03);
     border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    width:45vw;
+    font-size: 1.5rem;
 
   }
   
@@ -43,6 +56,33 @@
     padding: 1rem 1rem;
     background-color: rgba(0, 0, 0, 0.03);
     border-top: 10px solid rgba(0, 0, 0, 0.125);
+  }
+  
+  .flex-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5%;
+  }
+
+  .padding-bump-top {
+    padding-top: 1.5rem;
+  }
+
+  .form-group {
+    margin-bottom: -1rem;
+    
+  }
+
+  .form-check {
+    margin-top: -2rem;
+    margin-bottom: .5rem;
+    font-size: .8rem;
+    align-self: center;
+  }
+
+  .button-styling {
+    margin-top: -2rem;
   }
   
   
