@@ -10,6 +10,7 @@ import { AccountService } from '../_services/account.service';
 export class LoginComponent implements OnInit {
   model: any = {}
   users: any;
+  show:boolean = false;
 
   constructor(public accountService: AccountService, private router: Router) {}
 
@@ -29,4 +30,10 @@ export class LoginComponent implements OnInit {
       alert(error);
     })
   }
+
+  showPassword()
+  {
+    this.show = !this.show;
+  }
+
 }
