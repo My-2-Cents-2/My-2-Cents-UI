@@ -9,7 +9,7 @@
                 type="text" 
                 class="form-control" 
                 formControlName='username'
-                placeholder="Username"
+                placeholder="username"
                 [class.is-invalid]='submitted && registerForm.get("username").errors'/>
                 
                 <div *ngIf="submitted && registerForm.get('username').hasError('required')" 
@@ -22,7 +22,7 @@
                       type="email" 
                       class="form-control" 
                       formControlName='email'
-                      placeholder="Email"
+                      placeholder="email"
                       [class.is-invalid]='submitted && registerForm.get("email").errors'/>
 
                       <div *ngIf="submitted && registerForm.get('email').hasError('required')" 
@@ -36,7 +36,7 @@
                   [type]="show ? 'text' : 'password'" 
                   class="form-control" 
                   formControlName='password'
-                  placeholder="Password"
+                  placeholder="password"
                   [class.is-invalid]='submitted && registerForm.get("password").errors'/>
                   
                   <div *ngIf="submitted && registerForm.get('password').hasError('required')" 
@@ -63,7 +63,7 @@
                   type="password" 
                   class="form-control" 
                   formControlName='confirmPassword'
-                  placeholder="Confirm Password"
+                  placeholder="confirm password"
                   [class.is-invalid]='registerForm.get("confirmPassword").errors'/>
 
                   <div *ngIf="submitted && registerForm.get('confirmPassword').hasError('required')" 

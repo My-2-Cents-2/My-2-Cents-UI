@@ -1,19 +1,14 @@
 .imagediv {
-  position: absolute;
-  text-align: center;
-  transform: translate(-50%, -50%);
-  top: 40%;
-  left: 50%;
-  color: rgb(0, 0, 0);
-  padding: 0%;
-  border-radius: px;
   display: flex;
-  justify-content: center;
-  z-index: -10;
+  flex-direction: column;
+  align-items: center;
+  z-index: -1
+  
 }
 
 .image {
-  margin-right: 16%;
+  margin-right: 8%;
+  width: 75%;
 }
 
 .button {
@@ -30,5 +25,68 @@
 .textdiv {
   display: flex;
   justify-content: right;
-  z-index: 10;
+  z-index: 1;
+  margin-top: -10rem;
+}
+
+.flex-wrapper {
+  align-items: center;
+  display:flex;
+  flex-direction: column;
+}
+
+.form-outline {
+  margin-top: .5rem;
+}
+
+.form-control {
+  margin-top: .5rem;
+}
+
+button {
+  margin-top: .5rem;
+  margin-bottom: 1rem;
+}
+
+.form-check {
+  font-size: .7rem;
+}
+
+.span-text {
+  font-size: .8rem;
+}
+
+.register-button {
+  background: radial-gradient(
+    circle,
+    rgb(234, 215, 158) 10%,
+    rgb(248, 220, 135) 30%,
+    rgb(223, 178, 38)
+  );
+  border-radius: 6px;
+  padding: 0.75em 1.25em;
+  font-weight: 550;
+  font-size: medium;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  color: black;
+}
+
+.register-button:hover {
+  background: radial-gradient(
+    circle,
+    rgb(156, 142, 80) 10%,
+    rgb(163, 139, 73),
+    rgb(114, 99, 35)
+  );
+
+}
+
+.register-button:active {
+  background-image: radial-gradient(
+    circle,
+    rgb(238, 205, 105),
+    rgb(248, 220, 135),
+    rgb(234, 215, 158)
+  );
 }
