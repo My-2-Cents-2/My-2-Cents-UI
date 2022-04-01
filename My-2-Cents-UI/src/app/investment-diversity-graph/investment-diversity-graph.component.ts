@@ -49,7 +49,6 @@ export class InvestmentDiversityGraphComponent implements OnInit
       this.investmentPortfolioService.getAllStockAssetByUser(this.User.userId).subscribe(result => {
         this.listOfStocks = result;
         this.getTotalCurrentStockValue();
-        console.log("my list of amazing stocks everyone should buy: " + this.listOfStocks);
       })
 
       // TODO: CHANGE THE GET ALL STOCK ASSETS BELOW TO CRYPTO 

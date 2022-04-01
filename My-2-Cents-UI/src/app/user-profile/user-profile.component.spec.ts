@@ -1,5 +1,7 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { AccountService } from '../_services/account.service';
 import { UserProfileComponent } from './user-profile.component';
 
 describe('UserProfileComponent', () => {
@@ -9,10 +11,9 @@ describe('UserProfileComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [RouterTestingModule, HttpClientTestingModule],
+      providers: [AccountService],
       declarations: [ UserProfileComponent ],
-      imports: [
-        HttpClientTestingModule,
-      ]
     })
     .compileComponents();
   });
@@ -26,4 +27,15 @@ describe('UserProfileComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should call ngOnInit', () => {
+    const fixture = TestBed.createComponent(UserProfileComponent);
+    const component = fixture.debugElement.componentInstance;
+    const service = fixture.debugElement.injector.get(AccountService);
+    let a:any;
+    let spy_getAccountInfo = spyOn(service,"login");
+    component.ngOnInit();
+    expect(component.Items).toEqual(a);
+  })
+
 });

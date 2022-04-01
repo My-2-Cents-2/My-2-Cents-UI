@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TrackMultipleAccountsComponent } from './track-multiple-accounts.component';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('TrackMultipleAccountsComponent', () => {
   let component: TrackMultipleAccountsComponent;
@@ -11,7 +12,7 @@ describe('TrackMultipleAccountsComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ TrackMultipleAccountsComponent ],
       imports: [
-        HttpClientTestingModule
+        HttpClientTestingModule, RouterTestingModule
       ]
     })
     .compileComponents();
@@ -26,4 +27,13 @@ describe('TrackMultipleAccountsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should call ngOnInit', () => {
+    const fixture = TestBed.createComponent(TrackMultipleAccountsComponent);
+    const component = fixture.debugElement.componentInstance;
+    let a:any;
+    component.ngOnInit();
+    expect(component.Items).toEqual(a);
+  })
+
 });
