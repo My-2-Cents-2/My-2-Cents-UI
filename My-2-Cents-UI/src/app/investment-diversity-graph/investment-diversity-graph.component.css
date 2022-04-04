@@ -1,8 +1,9 @@
 .diversity-pie-chart
 {
     padding: 1rem;
-    width: 20rem;
+    width: 25rem;
     background: radial-gradient(#e9f1f7, #c2c3d3, #9a9aa8);
+    opacity: 75%;
 
     border: .15em solid grey;
     margin-top: 0.3rem;
@@ -10,4 +11,66 @@
     margin-right: 3em;
 
     border-radius: 1rem;
+}
+
+.diversity-chart-heading
+{
+    text-align: center;
+    color: rgb(126, 104, 6);
+    font-family: sans-serif;
+    font-weight: 200;
+    font-size: 1.5rem;
+    position: relative;
+}
+
+.tooltip {
+    display:inline-block;
+    position:relative;
+    text-align:left;
+}
+
+.tooltip .right {
+    
+    top:50%;
+    left:100%;
+    margin-left:1.25rem;
+    transform:translate(0, -20%);
+    padding:0.625rem 1.25rem;
+    color:#444444;
+    background-color:#EEEEEE;
+    font-weight:normal;
+    font-size:1rem;
+    border-radius:0.5rem;
+    position:absolute;
+    z-index:1;
+    box-sizing:border-box;
+    border:1px solid #000000;box-shadow:0 1px 0.5rem #555555;
+    display:none;
+    min-width: 10rem;
+}
+
+.tooltip:hover .right {
+    display:block;
+}
+
+.tooltip .right i {
+    position:absolute;
+    top:50%;
+    right:100%;
+    margin-top:-0.75rem;
+    width:0.75rem;
+    height:1.5rem;
+    overflow:hidden;
+}
+
+.tooltip .right i::after {
+    content:'';
+    position:absolute;
+    width:0.75rem;
+    height:0.75rem;
+    left:0;
+    top:50%;
+    transform:translate(50%,-20%) rotate(-45deg);
+    background-color:#EEE;
+    border:1px solid #000;box-shadow:0 1px 0.5rem #555;
 }
