@@ -1,8 +1,9 @@
 .diversity-pie-chart
 {
     padding: 1rem;
-    width: 20rem;
+    width: 25rem;
     background: radial-gradient(#e9f1f7, #c2c3d3, #9a9aa8);
+    opacity: 75%;
 
     border: .15em solid grey;
     margin-top: 0.3rem;
@@ -10,4 +11,13 @@
     margin-right: 3em;
 
     border-radius: 1rem;
+}
+
+.diversity-chart-heading
+{
+    text-align: center;
+    color: rgb(126, 104, 6);
+    font-family: sans-serif;
+    font-weight: 200;
+    font-size: 1.5rem;
 }
