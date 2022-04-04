@@ -23,7 +23,8 @@ export class InvestmentDiversityGraphComponent implements OnInit
 
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
 
-  listOfData: number[] = [200, 200, 200, 200];
+  //list of data starts off at 0 because if user does not own/have money in an account, we do not want to show false information
+  listOfData: number[] = [0, 0, 0, 0];
   chartColors: string[] = ["rgba(68, 209, 243, 0.84)", "rgba(230, 255, 0, 0.84)", "rgba(15, 128, 193, 0.84)", "rgba(230, 160, 0, 0.84)"];
   listOfAccounts: Account[];
   listOfCheckingAccounts: Account[];
