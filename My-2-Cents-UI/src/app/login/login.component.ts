@@ -10,6 +10,7 @@ import { AccountService } from '../_services/account.service';
 export class LoginComponent implements OnInit {
   model: any = {}
   users: any;
+  show:boolean = false;
 
   constructor(public accountService: AccountService, private router: Router) {}
 
@@ -26,7 +27,13 @@ export class LoginComponent implements OnInit {
       this.router.navigateByUrl('/dashboard');
     }, error => {
       console.log(error);
-      alert(error);
+      alert("Username or Password is incorrect!");
     })
   }
+
+  showPassword()
+  {
+    this.show = !this.show;
+  }
+
 }
