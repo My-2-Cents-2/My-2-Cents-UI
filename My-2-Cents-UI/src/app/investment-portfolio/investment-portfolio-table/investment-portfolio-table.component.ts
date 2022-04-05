@@ -26,15 +26,12 @@ export class InvestmentPortfolioTableComponent implements OnInit {
     private http: HttpClient,
     private router: Router) {
     this.accountService.currentUser.pipe(take(1)).subscribe((data) => this.user = data);
-    this.investmentPortfolioServce.getTotalInvestmentByUser(this.user.userId).subscribe(result => {
-      this.totalInvestment = result;
-      console.log(result);
-    });
   }
-
+  
   ngOnInit(): void {
     this.getAllStockAssetsByUser(this.user.userId);
     this.getAllCryptoAssetsByUser(this.user.userId);
+    this.getTotalInvestmentByUser(this.user.userId);
   }
   //jasmine
   getAllStockAssetsByUser(userId) {
@@ -51,7 +48,14 @@ export class InvestmentPortfolioTableComponent implements OnInit {
     });
   }
 
-
-
-
+  getTotalInvestmentByUser(userId){
+    this.investmentPortfolioServce.getTotalInvestmentByUser(userId).subscribe(result => {
+      this.totalInvestment = result;
+      console.log(result);
+    });
+  }
+  
+  
+  
+  
 }
