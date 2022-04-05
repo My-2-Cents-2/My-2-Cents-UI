@@ -1,10 +1,11 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ReplaySubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { User } from '../_models/User';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { CustomEncoder } from './encoder';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,7 @@ export class AccountService {
   }
 
   register(model: any) {
+    model.clientURI = 'http://localhost:4200/emailconfirmation';
     return this.http.post(this.apiUrl + 'Authentication/Register', model, {responseType: 'json'}).pipe(
       map((user: User) => {
         if (user) {
@@ -54,5 +56,13 @@ export class AccountService {
 
   getDecodeToken(token){
     return JSON.parse(atob(token.split('.')[1]));
+  }
+
+  confirmEmail = (token: string, email: string) => {
+    let params = new HttpParams({ encoder: new CustomEncoder() })
+    params = params.append('email', email);
+    params = params.append('token', token);
+
+    return this.http.get(this.apiUrl + 'Authentication/EmailConfirmation', { params: params });
   }
 }

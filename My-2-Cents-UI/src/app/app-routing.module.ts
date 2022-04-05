@@ -11,6 +11,7 @@ import { TrackIncomeComponent } from './track-income/track-income.component';
 import { CreateProfileComponent } from './create-profile/create-profile.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthGuard } from './_authGuards/auth.guard';
+import { EmailConfirmationComponent } from './email-confirmation/email-confirmation.component';
 
 const routes: Routes = [
   // {
@@ -20,6 +21,7 @@ const routes: Routes = [
   // },
   { path: '', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'emailconfirmation', component: EmailConfirmationComponent },
   { path: 'dashboard', component: TrackMultipleAccountsComponent, canActivate: [AuthGuard] },
   { path: 'track-income/:AccountID', component: TrackIncomeComponent, canActivate: [AuthGuard] },
   { path: 'create-profile', component: CreateProfileComponent, canActivate: [AuthGuard] }
