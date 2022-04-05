@@ -18,6 +18,12 @@ import { CreateProfileComponent } from './create-profile/create-profile.componen
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import { JwtInterceptor } from './_interceptors/jwt.interceptor';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { InvestingComponent } from './investing/investing.component';
+import { CryptoComponent } from './crypto/crypto.component';
+import { StockComponent } from './stock/stock.component';
+import { RouterModule } from '@angular/router';
+
 import { BudgetCalculatorComponent } from './budget-calculator/budget-calculator.component';
 import { BudgetChartComponent } from './budget-chart/budget-chart.component';
 import { NgChartsModule } from 'ng2-charts';
@@ -35,6 +41,9 @@ import { BudgetInfoComponent } from './budget-info/budget-info.component';
     UserChangeInfoComponent,
     CreateProfileComponent,
     RegisterComponent,
+    InvestingComponent,
+    CryptoComponent,
+    StockComponent,
     BudgetCalculatorComponent,
     BudgetChartComponent,
     BudgetInfoComponent
@@ -45,6 +54,7 @@ import { BudgetInfoComponent } from './budget-info/budget-info.component';
     FormsModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FontAwesomeModule,
     NgChartsModule
   ],
   providers: [
