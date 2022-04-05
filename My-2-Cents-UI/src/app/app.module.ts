@@ -28,6 +28,18 @@ import { NgChartsModule } from 'ng2-charts';
 import { BudgetInfoComponent } from './budget-info/budget-info.component';
 
 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { InvestingComponent } from './investing/investing.component';
+import { CryptoComponent } from './crypto/crypto.component';
+import { StockComponent } from './stock/stock.component';
+import { RouterModule } from '@angular/router';
+
+import { BudgetCalculatorComponent } from './budget-calculator/budget-calculator.component';
+import { BudgetChartComponent } from './budget-chart/budget-chart.component';
+import { NgChartsModule } from 'ng2-charts';
+import { BudgetInfoComponent } from './budget-info/budget-info.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +61,7 @@ import { BudgetInfoComponent } from './budget-info/budget-info.component';
     StockComponent,
     BudgetCalculatorComponent,
     BudgetChartComponent,
-    BudgetInfoComponent,
+    BudgetInfoComponent
   ],
   imports: [
     HttpClientModule,
@@ -58,7 +70,7 @@ import { BudgetInfoComponent } from './budget-info/budget-info.component';
     AppRoutingModule,
     ReactiveFormsModule,
     FontAwesomeModule,
-    NgChartsModule,
+    NgChartsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
