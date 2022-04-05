@@ -17,8 +17,6 @@ export class InvestmentPortfolioTableComponent implements OnInit {
   listOfStockAssets: StockAsset[];
   listOfCryptoAssets: CryptoAsset[];
   totalInvestment: TotalInvestment;
-  //userId: number;
-
 
   constructor(
     private accountService: AccountService,
@@ -33,14 +31,14 @@ export class InvestmentPortfolioTableComponent implements OnInit {
     this.getAllCryptoAssetsByUser(this.user.userId);
     this.getTotalInvestmentByUser(this.user.userId);
   }
-  //jasmine
+
   getAllStockAssetsByUser(userId) {
     this.investmentPortfolioServce.getAllStockAssetByUser(userId).subscribe(result => {
       this.listOfStockAssets = result;
       console.log(result);
     });
   }
-  //vijhan
+
   getAllCryptoAssetsByUser(userId) {
     this.investmentPortfolioServce.getAllCryptoAssetByUser(userId).subscribe(result => {
       this.listOfCryptoAssets = result;
@@ -54,8 +52,4 @@ export class InvestmentPortfolioTableComponent implements OnInit {
       console.log(result);
     });
   }
-  
-  
-  
-  
 }
