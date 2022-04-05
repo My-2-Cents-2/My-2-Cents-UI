@@ -55,7 +55,7 @@ describe('InvestmentPortfolioTableComponent', () => {
     }
   ]
 
-  let MockTotalInvestment: TotalInvestment = {
+  let mockTotalInvestment: TotalInvestment = {
     userInvestmentSum: 10
   }
 
@@ -74,9 +74,10 @@ describe('InvestmentPortfolioTableComponent', () => {
 
     getTotalInvestmentByUser(userId: number) {
       return new Observable((observable) => {
-        observable.next(MockTotalInvestment)
+        observable.next(mockTotalInvestment)
       })
     };
+    
   }
 
   // class AccountMockService {
@@ -123,6 +124,11 @@ describe('InvestmentPortfolioTableComponent', () => {
 
   it('should get stock asset by user', () => {
     expect(component.getAllStockAssetsByUser).toEqual(mockStockAsset);
+  });
+
+  it('should get total investment by user', () => {
+    component.getTotalInvestmentByUser(1);
+    expect(component.totalInvestment).toEqual(mockTotalInvestment);
   });
 
   /*it('should call ngOnInit', () => {
