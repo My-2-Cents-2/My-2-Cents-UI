@@ -1,0 +1,19 @@
+<div class="diversity-pie-chart">
+    <h3 class="diversity-chart-heading">Investment Diversity Graph <span>
+    <div class="tooltip">ⓘ
+      <div class="right">
+        <p>This graph shows your total for each asset. To see the amount, hover over the slice in the chart. To hide an asset, click on the label.</p>
+        <i></i>
+      </div>
+    </div>
+    </span>
+    </h3>
+  <div class="chart">
+    <canvas baseChart
+            [data]="pieChartData"
+            [type]="pieChartType"
+            [options]="pieChartOptions"
+            [plugins]="pieChartPlugins">
+    </canvas>
+  </div>
+</div>

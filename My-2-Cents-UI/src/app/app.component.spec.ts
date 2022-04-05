@@ -6,6 +6,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { TrackIncomeComponent } from './track-income/track-income.component';
 import { TrackMultipleAccountsComponent } from './track-multiple-accounts/track-multiple-accounts.component';
 import { LoginComponent } from './login/login.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+
 
 describe('AppComponent', () => {
     const routes: Routes = [
@@ -23,6 +25,7 @@ describe('AppComponent', () => {
                 UserProfileComponent,
             ],
             imports: [
+                HttpClientTestingModule,
                 RouterModule.forRoot(routes),
 
             ],

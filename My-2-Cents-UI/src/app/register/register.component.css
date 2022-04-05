@@ -1,0 +1,120 @@
+.form-control {
+  width:40%;
+  margin-top: .5rem;
+
+}
+
+.span-text {
+  padding-bottom: 1.5rem;
+  font-size: .8rem;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 10px;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: content-box;
+    /* border: 500px solid rgba(0, 0, 0, 0.125); */
+    /* border-left-width: 500px solid rgba(0, 0, 0, 0.125); */
+    border-radius: 0.25rem;
+  }
+  .card > hr {
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+
+  .card-body {
+    flex: 1 1 auto;
+    /* padding: 1rem 1rem; */
+    border-left-width: 10px solid rgba(0, 0, 0, 0.125);
+    border-right-width: 10px solid rgba(0, 0, 0, 0.125);
+  }
+  
+  .card-title {
+    margin-bottom: 1rem;
+  }
+  
+  .card-subtitle {
+    margin-top: 1rem;
+    margin-bottom: 0;
+  }
+  
+  .card-header {
+    padding: 1rem;
+    margin-bottom: 0;
+    background-color: rgba(0, 0, 0, 0.03);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    width:45vw;
+    font-size: 1.5rem;
+
+  }
+  
+  .card-footer {
+    padding: 1rem 1rem;
+    background-color: rgba(0, 0, 0, 0.03);
+    border-top: 10px solid rgba(0, 0, 0, 0.125);
+  }
+  
+  .flex-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5%;
+  }
+
+  .padding-bump-top {
+    padding-top: 1.5rem;
+  }
+
+  .form-group {
+    margin-bottom: -1rem;
+    
+  }
+
+  .form-check {
+    margin-bottom: .5rem;
+    font-size: .8rem;
+    align-self: center;
+  }
+
+  .button-styling {
+    margin-top: -2rem;
+  }
+  
+
+  .register-button {
+    background: radial-gradient(
+      circle,
+      rgb(234, 215, 158) 10%,
+      rgb(248, 220, 135) 30%,
+      rgb(223, 178, 38)
+    );
+    padding: 0.75em 1.25em;
+    font-weight: 550;
+    font-size: medium;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    color: black;
+  }
+  
+  .register-button:hover {
+    background: radial-gradient(
+      circle,
+      rgb(156, 142, 80) 10%,
+      rgb(163, 139, 73),
+      rgb(114, 99, 35)
+    );
+  
+  }
+  
+  .register-button:active {
+    background-image: radial-gradient(
+      circle,
+      rgb(238, 205, 105),
+      rgb(248, 220, 135),
+      rgb(234, 215, 158)
+    );
+  }

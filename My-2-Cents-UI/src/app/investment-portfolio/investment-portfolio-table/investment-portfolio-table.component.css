@@ -1,0 +1,23 @@
+.flex-wrapper
+{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.total-investment-heading
+{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.total-investment-heading > h1
+{
+    font-size: 3em;
+}
+
+.tableContainer{
+    justify-content: center;
+    display: flex;
+}
+

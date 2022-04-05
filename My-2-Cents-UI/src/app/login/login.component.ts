@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
   users: any;
   public errorMessage: string = '';
   public showError: boolean;
+  show:boolean = false;
 
   constructor(public accountService: AccountService, private router: Router) {}
 
@@ -31,6 +32,13 @@ export class LoginComponent implements OnInit {
       // alert(error);
       this.errorMessage = error.error.result;
       this.showError = true;
+      alert("Username or Password is incorrect!");
     })
   }
+
+  showPassword()
+  {
+    this.show = !this.show;
+  }
+
 }
