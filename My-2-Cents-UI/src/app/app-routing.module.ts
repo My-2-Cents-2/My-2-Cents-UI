@@ -9,6 +9,7 @@ import { AuthGuard } from './_authGuards/auth.guard';
 import { EmailConfirmationComponent } from './email-confirmation/email-confirmation.component';
 import { InvestmentPortfolioMainComponent } from './investment-portfolio/investment-portfolio-main/investment-portfolio-main.component';
 import { BudgetCalculatorComponent } from './budget-calculator/budget-calculator.component';
+import { TwoStepVerificationComponent } from './two-step-verification/two-step-verification.component';
 
 const routes: Routes = [
   // {
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'emailconfirmation', component: EmailConfirmationComponent },
+  { path: 'twostepverification', component: TwoStepVerificationComponent },
   { path: 'dashboard', component: TrackMultipleAccountsComponent, canActivate: [AuthGuard] },
   { path: 'track-income/:AccountID', component: TrackIncomeComponent, canActivate: [AuthGuard] },
   { path: 'create-profile', component: CreateProfileComponent, canActivate: [AuthGuard] },
