@@ -14,6 +14,7 @@ import { CreateProfileComponent } from './create-profile/create-profile.componen
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import { JwtInterceptor } from './_interceptors/jwt.interceptor';
+import { EmailConfirmationComponent } from './email-confirmation/email-confirmation.component';
 import { InvestmentDiversityGraphComponent } from './investment-diversity-graph/investment-diversity-graph.component';
 import { InvestmentPortfolioMainComponent } from './investment-portfolio/investment-portfolio-main/investment-portfolio-main.component';
 import { InvestmentPortfolioTableComponent } from './investment-portfolio/investment-portfolio-table/investment-portfolio-table.component';
@@ -27,19 +28,6 @@ import { BudgetChartComponent } from './budget-chart/budget-chart.component';
 import { NgChartsModule } from 'ng2-charts';
 import { BudgetInfoComponent } from './budget-info/budget-info.component';
 
-
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { InvestingComponent } from './investing/investing.component';
-import { CryptoComponent } from './crypto/crypto.component';
-import { StockComponent } from './stock/stock.component';
-import { RouterModule } from '@angular/router';
-
-import { BudgetCalculatorComponent } from './budget-calculator/budget-calculator.component';
-import { BudgetChartComponent } from './budget-chart/budget-chart.component';
-import { NgChartsModule } from 'ng2-charts';
-import { BudgetInfoComponent } from './budget-info/budget-info.component';
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,6 +40,7 @@ import { BudgetInfoComponent } from './budget-info/budget-info.component';
     UserChangeInfoComponent,
     CreateProfileComponent,
     RegisterComponent,
+    EmailConfirmationComponent,
     InvestmentDiversityGraphComponent,
     InvestmentPortfolioMainComponent,
     InvestmentPortfolioTableComponent,

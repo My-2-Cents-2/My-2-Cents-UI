@@ -10,6 +10,8 @@ import { AccountService } from '../_services/account.service';
 export class LoginComponent implements OnInit {
   model: any = {}
   users: any;
+  public errorMessage: string = '';
+  public showError: boolean;
   show:boolean = false;
 
   constructor(public accountService: AccountService, private router: Router) {}
@@ -27,7 +29,10 @@ export class LoginComponent implements OnInit {
       this.router.navigateByUrl('/dashboard');
     }, error => {
       console.log(error);
-      alert("Username or Password is incorrect!");
+      // alert(error);
+      this.errorMessage = error.error.result;
+      this.showError = true;
+      // alert("Username or Password is incorrect!");
     })
   }
 

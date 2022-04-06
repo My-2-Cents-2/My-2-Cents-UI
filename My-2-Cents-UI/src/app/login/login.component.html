@@ -8,7 +8,12 @@
             <h3 class='text'>Ready to put your<br> two cents in?</h3>
         </span> -->
     </div>
+    
+        
     <div style="text-align: center;">
+        <div *ngIf="showError" class="alert alert-danger" role="alert">
+            {{errorMessage}}
+        </div>
         <form #loginForm="ngForm" (ngSubmit)="login()" autocomplete='off'>
             <div>
                 <div class="form-outline flex-wrapper">
