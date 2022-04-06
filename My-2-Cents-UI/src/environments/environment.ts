@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   apiUrl: 'https://localhost:7106/api/',
-  webUrl: 'https://my2centsui.azurewebsites.net/'
+  webUrl: 'http://localhost:4200/'
 };
 
 /*

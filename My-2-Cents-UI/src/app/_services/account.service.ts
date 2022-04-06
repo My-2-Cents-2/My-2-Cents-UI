@@ -12,6 +12,7 @@ import { CustomEncoder } from './encoder';
 })
 export class AccountService {
   private readonly apiUrl = environment.apiUrl;
+  private readonly webUrl = environment.webUrl;
   private currentUserSource = new ReplaySubject<User>(1);
   currentUser = this.currentUserSource.asObservable();
   
@@ -30,21 +31,8 @@ export class AccountService {
     ) 
   }
 
-  // register(model: any) {
-  //   model.clientURI = 'http://localhost:4200/emailconfirmation';
-  //   return this.http.post(this.apiUrl + 'Authentication/Register', model, {responseType: 'json'}).pipe(
-  //     map((user: User) => {
-  //       if (user) {
-  //         localStorage.setItem('user', JSON.stringify(user));
-  //         this.currentUserSource.next(user);
-  //         alert('Created!');
-  //       }
-  //     })
-  //   );
-  // }
-
   register(model: any) {
-    model.clientURI = 'http://localhost:4200/emailconfirmation';
+    model.clientURI = this.webUrl + 'emailconfirmation';
     return this.http.post(this.apiUrl + 'Authentication/Register', model, {responseType: 'json'});
   }
 
