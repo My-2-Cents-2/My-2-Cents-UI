@@ -17,22 +17,15 @@ export class LoginComponent implements OnInit {
   constructor(public accountService: AccountService, private router: Router) {}
 
   ngOnInit(): void {}
-  
-  // loginWithRedirect(): void {
-  //   this.auth.loginWithRedirect({
-  //     appState: { target: '/dashboard' },
-  //   });
-  // }
 
   login(){
     this.accountService.login(this.model).subscribe(response => {
-      this.router.navigateByUrl('/dashboard');
+      alert("Please check your email for the 2 factor Authentication code:");
+      this.router.navigate(['/twostepverification'], { queryParams: {email: this.model.username} });
     }, error => {
       console.log(error);
-      // alert(error);
       this.errorMessage = error.error.result;
       this.showError = true;
-      // alert("Username or Password is incorrect!");
     })
   }
 
