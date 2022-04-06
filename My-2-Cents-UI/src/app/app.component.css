@@ -1,8 +1,4 @@
-
-
-.version {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  padding-right: 6px;
+.wrapper-div{
+  width: 25vw;
+  height: 25vh;
 }
