@@ -42,16 +42,16 @@ export class RegisterComponent implements OnInit {
       }
   }
 
-
   register(){
-
     this.submitted = true;
     console.log(this.registerForm.value, this.submitted);
     this.accountService.register(this.registerForm.value).subscribe(response => {
-      this.router.navigateByUrl('/dashboard')
+      alert("Register Successful! Please verify your email confirmation!");
+      this.router.navigateByUrl('')
       console.log(response);
     }, error => {
       console.log(error, this.submitted);
+      alert(error.error.result);
     })
   }
 
@@ -59,5 +59,4 @@ export class RegisterComponent implements OnInit {
   {
     this.show = !this.show;
   }
-
 }

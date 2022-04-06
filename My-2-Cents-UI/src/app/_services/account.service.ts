@@ -30,17 +30,22 @@ export class AccountService {
     ) 
   }
 
+  // register(model: any) {
+  //   model.clientURI = 'http://localhost:4200/emailconfirmation';
+  //   return this.http.post(this.apiUrl + 'Authentication/Register', model, {responseType: 'json'}).pipe(
+  //     map((user: User) => {
+  //       if (user) {
+  //         localStorage.setItem('user', JSON.stringify(user));
+  //         this.currentUserSource.next(user);
+  //         alert('Created!');
+  //       }
+  //     })
+  //   );
+  // }
+
   register(model: any) {
     model.clientURI = 'http://localhost:4200/emailconfirmation';
-    return this.http.post(this.apiUrl + 'Authentication/Register', model, {responseType: 'json'}).pipe(
-      map((user: User) => {
-        if (user) {
-          localStorage.setItem('user', JSON.stringify(user));
-          this.currentUserSource.next(user);
-          alert('Created!');
-        }
-      })
-    );
+    return this.http.post(this.apiUrl + 'Authentication/Register', model, {responseType: 'json'});
   }
 
   setCurrentUser(user: User) {

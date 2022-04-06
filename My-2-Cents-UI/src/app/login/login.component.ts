@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
       // alert(error);
       this.errorMessage = error.error.result;
       this.showError = true;
-      alert("Username or Password is incorrect!");
+      // alert("Username or Password is incorrect!");
     })
   }
 
