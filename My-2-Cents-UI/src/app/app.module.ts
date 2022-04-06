@@ -27,6 +27,7 @@ import { BudgetCalculatorComponent } from './budget-calculator/budget-calculator
 import { BudgetChartComponent } from './budget-chart/budget-chart.component';
 import { NgChartsModule } from 'ng2-charts';
 import { BudgetInfoComponent } from './budget-info/budget-info.component';
+import { TwoStepVerificationComponent } from './two-step-verification/two-step-verification.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { BudgetInfoComponent } from './budget-info/budget-info.component';
     StockComponent,
     BudgetCalculatorComponent,
     BudgetChartComponent,
-    BudgetInfoComponent
+    BudgetInfoComponent,
+    TwoStepVerificationComponent
   ],
   imports: [
     HttpClientModule,
