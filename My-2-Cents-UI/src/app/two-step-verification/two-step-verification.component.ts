@@ -51,7 +51,7 @@ export class TwoStepVerificationComponent implements OnInit {
       this.router.navigateByUrl('/dashboard');
     },
     error => {
-      this.errorMessage = error;
+      this.errorMessage = error.error.result;
       this.showError = true;
     })
   }
