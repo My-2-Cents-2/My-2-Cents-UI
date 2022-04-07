@@ -51,8 +51,8 @@
                   <div *ngIf="submitted && registerForm.get('password').hasError('minlength')" 
                   class="invalid-feedback" style="color:red">Minimum length should be at least 6 characters!</div><br>
 
-                  <!-- <div *ngIf="submitted && registerForm.get('password').hasError('pattern')" 
-                  class="invalid-feedback" style="color:red">Must contain at least 1 uppercase letter, 1 lowercase letter, and 1 special character!</div><br> -->
+                  <div *ngIf="submitted && registerForm.get('password').hasError('pattern')" 
+                  class="invalid-feedback" style="color:red">Must contain at least 1 uppercase letter, 1 lowercase letter, and 1 special character!</div><br>
           </div>
         </div>  
         
