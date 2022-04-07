@@ -95,7 +95,14 @@ export class CryptoComponent implements OnInit {
 
   updateCash(): void
   {
-    this.cents.getUserAccounts(this.user.userId).subscribe(res => this.currentCash = res[0].totalBalance);
+    this.cents.getUserAccounts(this.user.userId).subscribe(res => {
+      res.forEach(element => {
+        if (element.accountType == "Checking") {
+          this.currentCash = element.totalBalance;
+          return;
+        }
+      });
+    });
   }
 
   ngOnInit(): void {
