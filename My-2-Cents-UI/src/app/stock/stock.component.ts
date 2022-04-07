@@ -87,15 +87,24 @@ export class StockComponent implements OnInit {
       ],
       labels: [ 'January', 'February', 'March', 'April', 'May', 'June', 'July' ]
     };
+    
   }
 
   updateCash(): void
   {
-    this.cents.getUserAccounts(this.user.userId).subscribe(res => this.currentCash = res[0].totalBalance);
+    this.cents.getUserAccounts(this.user.userId).subscribe(res => {
+      res.forEach(element => {
+        if (element.accountType == "Checking") {
+          this.currentCash = element.totalBalance;
+          return;
+        }
+      });
+    });
   }
 
   ngOnInit(): void {
     this.account.currentUser.pipe(take(1)).subscribe((data) => this.user = data);
+    this.updateCash();
 
     this.stockName = this.Stock.shortenedName;
     let headers = new HttpHeaders();
